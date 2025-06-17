@@ -34,26 +34,17 @@
         console.log("The Input is: " + newTitle + " from " + newAuthor);
         let newBook = new Book(newTitle, newAuthor);
         books.push(newBook);
-        await PutBook(newBook);
-    }
-
-    async function PutBook(book: Book) {
-        const url = "http://backend:8000/book"; 
-
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(book)
-        };
-
-        var request = new Request(url, {
+        
+        var request = new Request("/api/book", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(book)
-        })
+            body: JSON.stringify(newBook)
+        });
 
-        fetch(request)
-            .then(r => console.log("Status of request: " + r.status));
+        var response = await fetch(request);
+        alert(response.status);
     }
+
+
 
 </script>
