@@ -5,6 +5,9 @@
     </h3>
 </div>
 
+<div class='container'>
+    <button class='btn' onclick="{GetBooks}">Load</button>
+</div>
 
 <div class='container my-3'>
     <ul class="list-group">Current Book Collection
@@ -45,6 +48,15 @@
         alert(response.status);
     }
 
+    async function GetBooks() {
+        var request = new Request("/api/book", {
+            method: "GET",
+            headers: { 'Content-Type': 'application/json' }
+        });
 
+        var response = await fetch(request);
+        books = await response.json();
+    }
 
+    GetBooks().then(_ => console.log("Loaded"));
 </script>

@@ -11,3 +11,14 @@ export async function PutBook(book: Book): Promise<Response> {
 
     return fetch(request);
 }
+
+export async function GetAllBooks(): Promise<Response> {
+    const url = "http://backend:8000/book"; 
+
+    var request = new Request(url, {
+        method: "GET",
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    return fetch(request);
+}
