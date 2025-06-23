@@ -58,5 +58,5 @@
         books = await response.json();
     }
 
-    GetBooks().then(_ => console.log("Loaded"));
+    // GetBooks().then(_ => console.log("Loaded"));
 </script>
